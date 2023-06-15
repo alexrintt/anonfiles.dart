@@ -5,6 +5,10 @@ import 'package:uno/uno.dart';
 
 import '../models/anon_file_upload.dart';
 
+/// {@template uploadFileWith}
+/// Help function that actually uploads the file [bytes]
+/// with a given [filename] using a [uno] instance to a given AnonFiles [endpoint].
+/// {@endtemplate}
 Stream<AnonFileUploadEvent> uploadFileWith({
   required Uno uno,
   required String endpoint,

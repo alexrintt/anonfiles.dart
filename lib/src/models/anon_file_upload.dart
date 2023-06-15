@@ -4,6 +4,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'anon_file_upload.freezed.dart';
 part 'anon_file_upload.g.dart';
 
+/// The event emitted by AnonFiles clients [upload] method.
+///
+/// Allow tracking the upload [progress] and, when done, get the request [response].
 @freezed
 class AnonFileUploadEvent with _$AnonFileUploadEvent {
   const factory AnonFileUploadEvent({
@@ -15,6 +18,7 @@ class AnonFileUploadEvent with _$AnonFileUploadEvent {
       _$AnonFileUploadEventFromJson(json);
 }
 
+/// The response class for the AnonFile upload response.
 @freezed
 class AnonFileUploadResponse with _$AnonFileUploadResponse {
   const factory AnonFileUploadResponse({
@@ -26,6 +30,7 @@ class AnonFileUploadResponse with _$AnonFileUploadResponse {
       _$AnonFileUploadResponseFromJson(json);
 }
 
+/// The data class for the AnonFile upload response.
 @freezed
 class AnonFileUploadResponseData with _$AnonFileUploadResponseData {
   const factory AnonFileUploadResponseData({
@@ -36,6 +41,9 @@ class AnonFileUploadResponseData with _$AnonFileUploadResponseData {
       _$AnonFileUploadResponseDataFromJson(json);
 }
 
+/// The file returned by the upload response.
+///
+/// Use [url] to get the download URL and [metadata] to get more info about it.
 @freezed
 class AnonFile with _$AnonFile {
   const factory AnonFile({
@@ -47,6 +55,7 @@ class AnonFile with _$AnonFile {
       _$AnonFileFromJson(json);
 }
 
+/// Holder for the [full] and [short] download links.
 @freezed
 class AnonFileUrl with _$AnonFileUrl {
   const factory AnonFileUrl({
@@ -58,6 +67,7 @@ class AnonFileUrl with _$AnonFileUrl {
       _$AnonFileUrlFromJson(json);
 }
 
+/// Metadata returned by the upload response.
 @freezed
 class AnonFileMetadata with _$AnonFileMetadata {
   const factory AnonFileMetadata({
@@ -70,6 +80,7 @@ class AnonFileMetadata with _$AnonFileMetadata {
       _$AnonFileMetadataFromJson(json);
 }
 
+/// Holder for file [bytes] count and the human [readable] size.
 @freezed
 class AnonFileSize with _$AnonFileSize {
   const factory AnonFileSize({

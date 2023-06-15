@@ -2,7 +2,7 @@ name: anonfiles
 description: >-
   AnonFiles HTTP client based on uno.
   Support for AnonFiles, FileChan and LetsUpload.
-version: 0.1.0
+version: 0.2.0
 repository: https://github.com/alexrintt/anonfiles.dart
 homepage: https://github.com/alexrintt/anonfiles.dart/tree/master/packages/anonfiles
 documentation: https://github.com/alexrintt/anonfiles.dart/tree/master/packages/anonfiles
