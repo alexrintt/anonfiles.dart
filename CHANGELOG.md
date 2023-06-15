@@ -1,3 +1,7 @@
+## 0.2.1
+
+- Fix pubspec 404 links.
+
 ## 0.2.0
 
 - Add Dart docs.
