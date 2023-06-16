@@ -26,33 +26,13 @@ import 'package:anonfiles/anonfiles.dart';
 The usage is pretty straightforward:
 
 ```dart
-final Uint8List bytes = File('example/sample.txt').readAsBytesSync();
-const String filename = 'sample.txt';
+final client = AnonFiles(); // LetsUpload() and FileChan() are also available.
 
-// https://anonfiles.com/docs/api
-print('[AnonFiles]:');
-final AnonFiles anonFiles = AnonFiles();
-await for (final AnonFileUploadEvent event
-    in anonFiles.upload(bytes: bytes, filename: filename)) {
-  print('Event: $event');
-}
-
-// https://filechan.org/docs/api
-print('[fileChan]:');
-final FileChan fileChan = FileChan();
-await for (final AnonFileUploadEvent event
-    in fileChan.upload(bytes: bytes, filename: filename)) {
-  print('Event: $event');
-}
-
-// https://letsupload.cc/docs/api
-print('[letsUpload]:');
-final LetsUpload letsUpload = LetsUpload();
-await for (final AnonFileUploadEvent event
-    in letsUpload.upload(bytes: bytes, filename: filename)) {
-  print('Event: $event');
-}
+await client.upload(bytes: bytes, filename: filename);
+await client.getDirectDownloadUrl(htmlDownloadUrl);
 ```
+
+Check [/example](https://github.com/alexrintt/anonfiles.dart/blob/main/example/anonfiles_example.dart) for details.
 
 ## Contributing
 

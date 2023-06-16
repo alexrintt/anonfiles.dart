@@ -1,3 +1,12 @@
+## 0.4.1
+
+- Improve docs.
+
+## 0.4.0
+
+- Add [getDirectDownloadUrl] API.
+- Add E2EE tests.
+
 ## 0.2.1
 
 - Fix pubspec 404 links.
