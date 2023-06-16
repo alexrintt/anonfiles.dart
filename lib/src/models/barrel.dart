@@ -1,1 +1,1 @@
-export './anon_file_upload.dart';
+export 'anon_file_upload.dart';

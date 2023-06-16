@@ -1,3 +1,3 @@
 library anonfiles;
 
-export './src/barrel.dart';
+export 'src/barrel.dart';

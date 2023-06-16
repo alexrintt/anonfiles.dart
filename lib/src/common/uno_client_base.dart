@@ -3,7 +3,7 @@ import 'dart:typed_data';
 
 import 'package:uno/uno.dart';
 import '../models/anon_file_upload.dart';
-import 'anon_files_service_base.dart';
+import 'anon_files_client_base.dart';
 import 'upload_file_with.dart';
 
 /// Provides a common implementation across all AnonFiles APIs.
