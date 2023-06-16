@@ -11,7 +11,9 @@ void main() {
 
     for (final AnonFilesClientBase client in clients) {
       final AnonFileUploadResponse? response = await client.uploadFileBytes(
-          bytes: sampleFileBytes, filename: kSampleFileName);
+        bytes: sampleFileBytes,
+        filename: kSampleFileName,
+      );
 
       expect(response, isNot(isNull));
     }
