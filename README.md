@@ -2,7 +2,7 @@
 
 [![Pub Version](https://img.shields.io/pub/v/anonfiles)](https://pub.dev/packages/anonfiles) [![Pub Version](https://img.shields.io/pub/points/anonfiles)](https://pub.dev/packages/anonfiles)
 
-This is a library for interacting with [AnonFiles API](https://anonfiles.com/) related APIs:
+This is a library for interacting with [AnonFiles](https://anonfiles.com/) related APIs:
 
 - https://anonfiles.com/.
 - https://filechan.org/.
