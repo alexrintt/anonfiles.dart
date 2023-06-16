@@ -1,7 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:web_scraper/web_scraper.dart';
-
 import '../models/anon_file_upload.dart';
 
 /// Base client for all AnonFiles clients.
