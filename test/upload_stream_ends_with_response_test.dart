@@ -10,11 +10,10 @@ void main() {
     final List<AnonFilesClientBase> clients = allClients();
 
     for (final AnonFilesClientBase client in clients) {
-      final AnonFileUploadEvent response = await client
-          .upload(bytes: sampleFileBytes, filename: kSampleFileName)
-          .last;
+      final AnonFileUploadResponse? response = await client.uploadFileBytes(
+          bytes: sampleFileBytes, filename: kSampleFileName);
 
-      expect(response.response, isNot(isNull));
+      expect(response, isNot(isNull));
     }
   });
 }

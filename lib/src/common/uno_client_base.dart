@@ -22,15 +22,12 @@ import 'upload_file_with.dart';
 ///   static const String kApiUploadUrl = 'https://api.any-custom-anonfile-sapi.com/upload';
 /// }
 /// ```
-abstract class AnonFilesUnoClientBase implements AnonFilesClientBase {
+abstract class AnonFilesUnoClientBase extends AnonFilesClientBase {
   AnonFilesUnoClientBase({
-    required this.id,
+    required String id,
     required this.apiUploadUrl,
     this.uno,
-  });
-
-  /// {@macro api.id}
-  final String id;
+  }) : super(id: id);
 
   /// [Uno] associated HTTP client with this object.
   final Uno? uno;
@@ -43,9 +40,9 @@ abstract class AnonFilesUnoClientBase implements AnonFilesClientBase {
   Uno? __uno;
   Uno get _uno => uno ?? (__uno ??= Uno());
 
-  /// {@macro api.upload}
+  /// {@macro api.uploadFileBytesWithProgress}
   @override
-  Stream<AnonFileUploadEvent> upload({
+  Stream<AnonFileUploadEvent> uploadFileBytesWithProgress({
     required Uint8List bytes,
     required String filename,
   }) =>

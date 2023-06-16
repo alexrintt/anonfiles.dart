@@ -8,23 +8,24 @@ void main() {
     final List<AnonFilesClientBase> clients = allClients();
 
     for (final AnonFilesClientBase client in clients) {
-      final AnonFileUploadEvent result = await client
-          .upload(bytes: sampleFileBytes, filename: kSampleFileName)
-          .last;
+      final AnonFileUploadResponse? response = await client.uploadFileBytes(
+        bytes: sampleFileBytes,
+        filename: kSampleFileName,
+      );
 
-      final AnonFileUrl? url = result.response?.data?.file?.url;
-      final String? fileId = result.response?.data?.file?.metadata?.id;
+      final AnonFileHtmlUrl? htmlUrl = response?.data?.file?.htmlUrl;
+      final String? fileId = response?.data?.file?.metadata?.id;
 
-      expect(url, isNot(isNull));
-      expect(url!.full, isNot(isNull));
-      expect(url.short, isNot(isNull));
+      expect(htmlUrl, isNot(isNull));
+      expect(htmlUrl!.full, isNot(isNull));
+      expect(htmlUrl.short, isNot(isNull));
 
       expect(
-        await getDirectDownloadUrlWith(downloadUrl: url.full!),
+        await getDirectDownloadUrlWith(downloadUrl: htmlUrl.full!),
         contains(fileId),
       );
       expect(
-        await getDirectDownloadUrlWith(downloadUrl: url.short!),
+        await getDirectDownloadUrlWith(downloadUrl: htmlUrl.short!),
         contains(fileId),
       );
     }

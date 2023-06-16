@@ -11,13 +11,27 @@ abstract class AnonFilesClientBase {
   /// {@endtemplate}
   final String id;
 
-  /// {@template api.upload}
-  /// Upload a given file [bytes] with a given [filename].
+  /// {@template api.uploadFileBytesWithProgress}
+  /// Upload a given file [bytes] with a given [filename] and return the response as a [Stream].
   /// {@endtemplate}
-  Stream<AnonFileUploadEvent> upload({
+  Stream<AnonFileUploadEvent> uploadFileBytesWithProgress({
     required Uint8List bytes,
     required String filename,
   });
+
+  /// {@template api.uploadFileBytes}
+  /// Upload a given file [bytes] with a given [filename] and return the response as a [Future].
+  /// {@endtemplate}
+  Future<AnonFileUploadResponse?> uploadFileBytes({
+    required Uint8List bytes,
+    required String filename,
+  }) async {
+    final AnonFileUploadEvent lastEvent =
+        await uploadFileBytesWithProgress(bytes: bytes, filename: filename)
+            .last;
+
+    return lastEvent.response;
+  }
 
   /// {@template api.getDirectDownloadUrl}
   /// Scrape the direct download link from the provided [downloadUrl] when [upload]ing it.

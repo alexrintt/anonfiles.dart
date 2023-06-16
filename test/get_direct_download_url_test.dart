@@ -2,7 +2,7 @@ import 'package:anonfiles/src/common/get_direct_download_url_with.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('E2EE [getDirectDownloadUrlTest]', () async {
+  test('E2EE test [getDirectDownloadUrl]', () async {
     // Pre-uploaded file.
     const String kHtmlDownloadUrl =
         'https://anonfiles.com/z554Vcw7z4/sample_txt';

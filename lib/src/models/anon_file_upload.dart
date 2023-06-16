@@ -26,8 +26,19 @@ class AnonFileUploadResponse with _$AnonFileUploadResponse {
     AnonFileUploadResponseError? error,
   }) = _AnonFileUploadResponse;
 
+  const AnonFileUploadResponse._();
+
   factory AnonFileUploadResponse.fromJson(Map<String, Object?> json) =>
       _$AnonFileUploadResponseFromJson(json);
+
+  /// Alias getter to [data?.file?.url?.short].
+  String? get htmlDownloadShortUrl => data?.file?.htmlUrl?.short;
+
+  /// Alias getter to [data?.file?.url?.full].
+  String? get htmlDownloadFullUrl => data?.file?.htmlUrl?.full;
+
+  /// [htmlDownloadShortUrl] or [htmlDownloadFullUrl].
+  String? get htmlDownloadUrl => htmlDownloadShortUrl ?? htmlDownloadFullUrl;
 }
 
 /// The response class for the AnonFile upload response error.
@@ -50,8 +61,19 @@ class AnonFileUploadResponseData with _$AnonFileUploadResponseData {
     AnonFile? file,
   }) = _AnonFileUploadResponseData;
 
+  const AnonFileUploadResponseData._();
+
   factory AnonFileUploadResponseData.fromJson(Map<String, Object?> json) =>
       _$AnonFileUploadResponseDataFromJson(json);
+
+  /// Alias getter to [file?.url?.short].
+  String? get htmlDownloadShortUrl => file?.htmlUrl?.short;
+
+  /// Alias getter to [file?.url?.full].
+  String? get htmlDownloadFullUrl => file?.htmlUrl?.full;
+
+  /// [htmlDownloadShortUrl] or [htmlDownloadFullUrl].
+  String? get htmlDownloadUrl => htmlDownloadShortUrl ?? htmlDownloadFullUrl;
 }
 
 /// The file returned by the upload response.
@@ -60,7 +82,7 @@ class AnonFileUploadResponseData with _$AnonFileUploadResponseData {
 @freezed
 class AnonFile with _$AnonFile {
   const factory AnonFile({
-    AnonFileUrl? url,
+    @JsonKey(name: 'url') AnonFileHtmlUrl? htmlUrl,
     AnonFileMetadata? metadata,
   }) = _AnonFile;
 
@@ -70,14 +92,14 @@ class AnonFile with _$AnonFile {
 
 /// Holder for the [full] and [short] download links.
 @freezed
-class AnonFileUrl with _$AnonFileUrl {
-  const factory AnonFileUrl({
+class AnonFileHtmlUrl with _$AnonFileHtmlUrl {
+  const factory AnonFileHtmlUrl({
     String? full,
     String? short,
-  }) = _AnonFileUrl;
+  }) = _AnonFileHtmlUrl;
 
-  factory AnonFileUrl.fromJson(Map<String, Object?> json) =>
-      _$AnonFileUrlFromJson(json);
+  factory AnonFileHtmlUrl.fromJson(Map<String, Object?> json) =>
+      _$AnonFileHtmlUrlFromJson(json);
 }
 
 /// Metadata returned by the upload response.

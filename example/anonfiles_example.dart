@@ -9,26 +9,26 @@ Future<void> useClient(AnonFilesClientBase client) async {
   final Uint8List bytes = File('data/sample.txt').readAsBytesSync();
   const String filename = 'sample.txt';
 
-  final AnonFileUploadEvent result =
-      await client.upload(bytes: bytes, filename: filename).last;
+  final AnonFileUploadResponse? response =
+      await client.uploadFileBytes(bytes: bytes, filename: filename);
 
-  if (result.response?.error != null) {
+  if (response?.data != null) {
+    final String htmlDownloadUrl = response!.htmlDownloadUrl!;
+
+    final String? fileDirectDownloadUrl =
+        await client.getDirectDownloadUrl(htmlDownloadUrl);
+
+    // URL to open the download page.
+    print('HTML download short URL: $htmlDownloadUrl');
+
+    // URL to the file directly.
+    print('Direct download URL: $fileDirectDownloadUrl');
+
+    print('[-End-]\n');
+  } else {
     // Handle error.
-    print('Error: ${result.response?.error?.message}');
-  } else {}
-
-  final String htmlDownloadUrl = result.response!.data!.file!.url!.short!;
-
-  // URL to open the download page.
-  print('HTML download short URL: $htmlDownloadUrl');
-
-  final String? fileDirectDownloadUrl =
-      await client.getDirectDownloadUrl(htmlDownloadUrl);
-
-  // URL to the file directly.
-  print('Direct download URL: $fileDirectDownloadUrl');
-
-  print('[-End-]\n');
+    print('Error: ${response?.error?.message}');
+  }
 }
 
 void main() async {
