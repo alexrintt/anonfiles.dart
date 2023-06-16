@@ -3,31 +3,36 @@ import 'dart:typed_data';
 
 import 'package:anonfiles/anonfiles.dart';
 
-void main() async {
-  final Uint8List bytes = File('example/sample.txt').readAsBytesSync();
+Future<void> useClient(AnonFilesClientBase client) async {
+  print('[${client.runtimeType}]');
+
+  final Uint8List bytes = File('data/sample.txt').readAsBytesSync();
   const String filename = 'sample.txt';
 
-  // https://anonfiles.com/docs/api
-  print('[AnonFiles]:');
-  final AnonFiles anonFiles = AnonFiles();
-  await for (final AnonFileUploadEvent event
-      in anonFiles.upload(bytes: bytes, filename: filename)) {
-    print('Event: $event');
-  }
+  final AnonFileUploadEvent result =
+      await client.upload(bytes: bytes, filename: filename).last;
 
-  // https://filechan.org/docs/api
-  print('[fileChan]:');
-  final FileChan fileChan = FileChan();
-  await for (final AnonFileUploadEvent event
-      in fileChan.upload(bytes: bytes, filename: filename)) {
-    print('Event: $event');
-  }
+  if (result.response?.error != null) {
+    // Handle error.
+    print('Error: ${result.response?.error?.message}');
+  } else {}
 
-  // https://letsupload.cc/docs/api
-  print('[letsUpload]:');
-  final LetsUpload letsUpload = LetsUpload();
-  await for (final AnonFileUploadEvent event
-      in letsUpload.upload(bytes: bytes, filename: filename)) {
-    print('Event: $event');
+  final String htmlDownloadUrl = result.response!.data!.file!.url!.short!;
+
+  // URL to open the download page.
+  print('HTML download short URL: $htmlDownloadUrl');
+
+  final String? fileDirectDownloadUrl =
+      await client.getDirectDownloadUrl(htmlDownloadUrl);
+
+  // URL to the file directly.
+  print('Direct download URL: $fileDirectDownloadUrl');
+
+  print('[-End-]\n');
+}
+
+void main() async {
+  for (final AnonFilesClientBase client in allClients()) {
+    await useClient(client);
   }
 }

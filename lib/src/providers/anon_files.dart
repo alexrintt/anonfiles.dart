@@ -15,6 +15,7 @@ import '../common/uno_client_base.dart';
 class AnonFiles extends AnonFilesUnoClientBase {
   AnonFiles({Uno? uno, String apiUploadUrl = kApiUploadUrl})
       : super(
+          id: 'anonfiles.com',
           uno: uno,
           apiUploadUrl: apiUploadUrl,
         );

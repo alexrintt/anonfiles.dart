@@ -15,6 +15,7 @@ import '../common/uno_client_base.dart';
 class FileChan extends AnonFilesUnoClientBase {
   FileChan({Uno? uno, String apiUploadUrl = kApiUploadUrl})
       : super(
+          id: 'filechan.org',
           uno: uno,
           apiUploadUrl: apiUploadUrl,
         );

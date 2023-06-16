@@ -15,6 +15,7 @@ import '../common/uno_client_base.dart';
 class LetsUpload extends AnonFilesUnoClientBase {
   LetsUpload({Uno? uno, String apiUploadUrl = kApiUploadUrl})
       : super(
+          id: 'letsupload.cc',
           uno: uno,
           apiUploadUrl: apiUploadUrl,
         );

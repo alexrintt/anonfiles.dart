@@ -23,10 +23,24 @@ class AnonFileUploadResponse with _$AnonFileUploadResponse {
   const factory AnonFileUploadResponse({
     bool? status,
     AnonFileUploadResponseData? data,
+    AnonFileUploadResponseError? error,
   }) = _AnonFileUploadResponse;
 
   factory AnonFileUploadResponse.fromJson(Map<String, Object?> json) =>
       _$AnonFileUploadResponseFromJson(json);
+}
+
+/// The response class for the AnonFile upload response error.
+@freezed
+class AnonFileUploadResponseError with _$AnonFileUploadResponseError {
+  const factory AnonFileUploadResponseError({
+    String? message,
+    String? type,
+    int? code,
+  }) = _AnonFileUploadResponseError;
+
+  factory AnonFileUploadResponseError.fromJson(Map<String, Object?> json) =>
+      _$AnonFileUploadResponseErrorFromJson(json);
 }
 
 /// The data class for the AnonFile upload response.
