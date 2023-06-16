@@ -28,7 +28,7 @@ The usage is pretty straightforward:
 ```dart
 final client = AnonFiles(); // LetsUpload() and FileChan() are also available.
 
-await client.upload(bytes: bytes, filename: filename);
+await client.uploadFileBytes(bytes: bytes, filename: filename);
 await client.getDirectDownloadUrl(htmlDownloadUrl);
 ```
 
@@ -36,4 +36,20 @@ Check [/example](https://github.com/alexrintt/anonfiles.dart/blob/main/example/a
 
 ## Contributing
 
-TODO.
+Setup dev environment:
+
+```shell
+$ git clone https://github.com/alexrintt/anonfiles.dart
+$ git checkout -b contrib/changes
+$ cd anonfiles.dart
+$ dart pub get
+$ dart run derry run gen:dart:watch
+```
+
+Commit and push:
+
+```shell
+git add .
+git commit -m "Describe changes"
+git push origin contrib/changes
+```
