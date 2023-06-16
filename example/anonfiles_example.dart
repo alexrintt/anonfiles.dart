@@ -15,20 +15,20 @@ Future<void> useClient(AnonFilesClientBase client) async {
   if (result.response?.error != null) {
     // Handle error.
     print('Error: ${result.response?.error?.message}');
-  } else {}
-
-  final String htmlDownloadUrl = result.response!.data!.file!.url!.short!;
-
-  // URL to open the download page.
-  print('HTML download short URL: $htmlDownloadUrl');
-
-  final String? fileDirectDownloadUrl =
-      await client.getDirectDownloadUrl(htmlDownloadUrl);
-
-  // URL to the file directly.
-  print('Direct download URL: $fileDirectDownloadUrl');
-
-  print('[-End-]\n');
+  } else {
+    final String htmlDownloadUrl = result.response!.data!.file!.url!.short!;
+  
+    // URL to open the download page.
+    print('HTML download short URL: $htmlDownloadUrl');
+  
+    final String? fileDirectDownloadUrl =
+        await client.getDirectDownloadUrl(htmlDownloadUrl);
+  
+    // URL to the file directly.
+    print('Direct download URL: $fileDirectDownloadUrl');
+  
+    print('[-End-]\n');
+  }
 }
 
 void main() async {
