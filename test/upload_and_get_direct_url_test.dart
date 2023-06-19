@@ -1,33 +1,43 @@
+import 'dart:io';
+
 import 'package:anonfiles/anonfiles.dart';
 import 'package:test/test.dart';
 
 import 'common.dart';
+import 'get_direct_download_url_test.dart';
 
 void main() {
-  test('E2EE [upload] & [getDirectDownloadUrl]', () async {
-    final List<AnonFilesClientBase> clients = allClients();
+  HttpOverrides.global = HttpNoCertValidation();
 
-    for (final AnonFilesClientBase client in clients) {
-      final AnonFileUploadResponse? response = await client.uploadFileBytes(
-        bytes: sampleFileBytes,
-        filename: kSampleFileName,
-      );
+  test(
+    'E2EE [upload] & [getDirectDownloadUrl]',
+    () async {
+      final List<AnonFilesClientBase> clients = allClients();
 
-      final AnonFileHtmlUrl? htmlUrl = response?.data?.file?.htmlUrl;
-      final String? fileId = response?.data?.file?.metadata?.id;
+      for (final AnonFilesClientBase client in clients) {
+        final AnonFileUploadResponse? response = await client.uploadFileBytes(
+          byteStream: sampleFileByteStream,
+          length: sampleFileLength,
+          filename: kSampleFileName,
+        );
 
-      expect(htmlUrl, isNot(isNull));
-      expect(htmlUrl!.full, isNot(isNull));
-      expect(htmlUrl.short, isNot(isNull));
+        final AnonFileHtmlUrl? htmlUrl = response?.data?.file?.htmlUrl;
+        final String? fileId = response?.data?.file?.metadata?.id;
 
-      expect(
-        await getDirectDownloadUrlWith(downloadUrl: htmlUrl.full!),
-        contains(fileId),
-      );
-      expect(
-        await getDirectDownloadUrlWith(downloadUrl: htmlUrl.short!),
-        contains(fileId),
-      );
-    }
-  });
+        expect(htmlUrl, isNot(isNull));
+        expect(htmlUrl!.full, isNot(isNull));
+        expect(htmlUrl.short, isNot(isNull));
+
+        expect(
+          await getDirectDownloadUrlWith(downloadUrl: htmlUrl.full!),
+          contains(fileId),
+        );
+        expect(
+          await getDirectDownloadUrlWith(downloadUrl: htmlUrl.short!),
+          contains(fileId),
+        );
+      }
+    },
+    timeout: const Timeout(Duration(seconds: 10000)),
+  );
 }

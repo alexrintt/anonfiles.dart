@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import '../models/anon_file_upload.dart';
+import '../../anonfiles.dart';
 
 /// Base client for all AnonFiles clients.
 abstract class AnonFilesClientBase {
@@ -15,20 +15,27 @@ abstract class AnonFilesClientBase {
   /// Upload a given file [bytes] with a given [filename] and return the response as a [Stream].
   /// {@endtemplate}
   Stream<AnonFileUploadEvent> uploadFileBytesWithProgress({
-    required Uint8List bytes,
+    required Stream<Uint8List> byteStream,
     required String filename,
+    required int length,
+    MultipartRequestClient? multipartRequestClient,
   });
 
   /// {@template api.uploadFileBytes}
   /// Upload a given file [bytes] with a given [filename] and return the response as a [Future].
   /// {@endtemplate}
   Future<AnonFileUploadResponse?> uploadFileBytes({
-    required Uint8List bytes,
+    required Stream<Uint8List> byteStream,
     required String filename,
+    required int length,
+    MultipartRequestClient? multipartRequestClient,
   }) async {
-    final AnonFileUploadEvent lastEvent =
-        await uploadFileBytesWithProgress(bytes: bytes, filename: filename)
-            .last;
+    final AnonFileUploadEvent lastEvent = await uploadFileBytesWithProgress(
+      byteStream: byteStream,
+      filename: filename,
+      length: length,
+      multipartRequestClient: multipartRequestClient,
+    ).firstWhere((AnonFileUploadEvent event) => event.response != null);
 
     return lastEvent.response;
   }

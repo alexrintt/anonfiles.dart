@@ -1,8 +1,6 @@
-import 'package:uno/uno.dart';
+import '../common/anon_files_impl_base.dart';
 
-import '../common/uno_client_base.dart';
-
-/// Implementation of [AnonFilesUnoClientBase] for https://filechan.org/.
+/// Implementation of [AnonFilesClientBase] for https://filechan.org/.
 ///
 /// Usage:
 /// ```dart
@@ -12,11 +10,10 @@ import '../common/uno_client_base.dart';
 ///   print('Event: $event');
 /// }
 /// ```
-class FileChan extends AnonFilesUnoClientBase {
-  FileChan({Uno? uno, String apiUploadUrl = kApiUploadUrl})
+class FileChan extends AnonFilesImplClientBase {
+  FileChan({String apiUploadUrl = kApiUploadUrl})
       : super(
           id: 'filechan.org',
-          uno: uno,
           apiUploadUrl: apiUploadUrl,
         );
 

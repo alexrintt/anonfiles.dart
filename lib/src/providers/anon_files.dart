@@ -1,8 +1,6 @@
-import 'package:uno/uno.dart';
+import '../common/anon_files_impl_base.dart';
 
-import '../common/uno_client_base.dart';
-
-/// Implementation of [AnonFilesUnoClientBase] for https://anonfiles.com/.
+/// Implementation of [AnonFilesImplClientBase] for https://anonfiles.com/.
 ///
 /// Usage:
 /// ```dart
@@ -12,11 +10,10 @@ import '../common/uno_client_base.dart';
 ///   print('Event: $event');
 /// }
 /// ```
-class AnonFiles extends AnonFilesUnoClientBase {
-  AnonFiles({Uno? uno, String apiUploadUrl = kApiUploadUrl})
+class AnonFiles extends AnonFilesImplClientBase {
+  AnonFiles({String apiUploadUrl = kApiUploadUrl})
       : super(
           id: 'anonfiles.com',
-          uno: uno,
           apiUploadUrl: apiUploadUrl,
         );
 

@@ -6,11 +6,20 @@ import 'package:anonfiles/anonfiles.dart';
 Future<void> useClient(AnonFilesClientBase client) async {
   print('[${client.runtimeType}]');
 
-  final Uint8List bytes = File('data/sample.txt').readAsBytesSync();
+  final File file = File('data/sample.txt');
+
+  final Stream<Uint8List> byteStream =
+      File('data/sample.txt').openRead().map(Uint8List.fromList);
+
+  final int length = file.lengthSync();
+
   const String filename = 'sample.txt';
 
-  final AnonFileUploadResponse? response =
-      await client.uploadFileBytes(bytes: bytes, filename: filename);
+  final AnonFileUploadResponse? response = await client.uploadFileBytes(
+    byteStream: byteStream,
+    filename: filename,
+    length: length,
+  );
 
   if (response?.data != null) {
     final String htmlDownloadUrl = response!.htmlDownloadUrl!;
