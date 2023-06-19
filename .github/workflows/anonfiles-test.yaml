@@ -1,0 +1,29 @@
+name: E2EE test anonfiles
+run-name: >-
+  [anonfiles] package E2EE test (${{ github.ref_name }}) triggered by @${{ github.actor }}
+
+on:
+  push:
+    branch: [main]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dart-lang/setup-dart@v1
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Generate code
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: Run Dart analyzer
+        run: dart analyze --fatal-infos
+
+      - name: Run tests
+        run: dart test
