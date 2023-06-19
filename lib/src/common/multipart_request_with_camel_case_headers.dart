@@ -85,7 +85,6 @@ class MultipartRequestWithCamelCaseHeaders extends BaseRequest {
   /// that will emit the request body.
   @override
   ByteStream finalize() {
-    // TODO: freeze fields and files
     final String boundary = _boundaryString();
     headers['Content-Type'] = 'multipart/form-data; boundary=$boundary';
     super.finalize();
