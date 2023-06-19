@@ -9,3 +9,13 @@ final Stream<Uint8List> sampleFileByteStream =
 final int sampleFileLength = sampleFileBytes.length;
 
 const String kSampleFileName = 'sample.txt';
+
+// To debug with third-party software like HTTP Toolkit
+class HttpNoCertValidation extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}

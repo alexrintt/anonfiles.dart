@@ -29,5 +29,8 @@ jobs:
       - name: Run Dart analyzer
         run: dart analyze --fatal-infos
 
+      - name: Run tests
+        run: dart test
+
       - name: Publish
         run: dart pub publish --force

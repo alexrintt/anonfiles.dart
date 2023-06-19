@@ -4,7 +4,6 @@ import 'package:anonfiles/anonfiles.dart';
 import 'package:test/test.dart';
 
 import 'common.dart';
-import 'get_direct_download_url_test.dart';
 
 void main() {
   HttpOverrides.global = HttpNoCertValidation();

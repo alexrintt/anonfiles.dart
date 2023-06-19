@@ -28,15 +28,23 @@ The usage is pretty straightforward:
 ```dart
 final client = AnonFiles(); // LetsUpload() and FileChan() are also available.
 
-await client.uploadFileBytes(bytes: bytes, filename: filename);
-await client.getDirectDownloadUrl(htmlDownloadUrl);
+final AnonFileUploadResponse? response = await client.uploadFileBytes(
+  byteStream: byteStream,
+  filename: filename,
+  length: length,
+);
+
+final String htmlDownloadUrl = response!.htmlDownloadUrl!;
+
+final String? fileDirectDownloadUrl =
+    await client.getDirectDownloadUrl(htmlDownloadUrl);
 ```
 
 Check [/example](https://github.com/alexrintt/anonfiles.dart/blob/main/example/anonfiles_example.dart) for details.
 
 ## Issues and requests
 
-- For security and vulnerability reports, see https://alexrintt.io/.well-known/security.txt.
+- For security and vulnerability reports, go to [security.alexrintt.io](https://security.alexrintt.io/).
 - For support, questions, bugs and feature requests open a [new issue](https://github.com/alexrintt/anonfiles.dart/issues/new).
 
 ## Contributing

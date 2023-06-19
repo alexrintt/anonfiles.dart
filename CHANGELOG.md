@@ -1,3 +1,7 @@
+## 0.6.0
+
+- API it's now entirely based on byte stream and not raw bytes to support large files.
+
 ## 0.4.1
 
 - Improve docs.
