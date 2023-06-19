@@ -35,7 +35,4 @@ void main() {
       );
     }
   });
-  test('Mock fail test to validate CI', () {
-    expect(true, false);
-  });
 }
