@@ -62,7 +62,7 @@ $ dart run derry run gen:dart:watch
 ```shell
 git add .
 git commit -m "Describe changes"
-git push origin contrib/changes
+git push origin main
 ```
 
 4. Open PR.
