@@ -92,13 +92,11 @@ Stream<AnonFileUploadEvent> uploadFileWith({
     );
   }
 
-  Future<void> onCancel() async {
-    await controller.close();
-  }
+  FutureOr<void> onCancel() {}
 
   Future<void> onListen() async {
     await controller.addStream(upload());
-    await onCancel();
+    await controller.close();
   }
 
   void onPause() {
