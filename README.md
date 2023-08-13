@@ -1,6 +1,6 @@
-[![Pub Version](https://img.shields.io/pub/v/deeptc)](https://pub.dev/packages/deeptc) [![Pub Version](https://img.shields.io/pub/points/deeptc)](https://pub.dev/packages/deeptc)
+[![Pub Version](https://img.shields.io/pub/v/anonfiles)](https://pub.dev/packages/anonfiles) [![Pub Version](https://img.shields.io/pub/points/anonfiles)](https://pub.dev/packages/anonfiles)
 
-See full [docs](https://pub.dev/packages/deeptc).
+See full [docs](https://pub.dev/packages/anonfiles).
 
 ---
 
