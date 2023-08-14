@@ -37,9 +37,14 @@ abstract class AnonFilesClientBase {
       filename: filename,
       length: length,
       multipartRequestClient: multipartRequestClient,
-      mapResponseJson: mapResponseJson,
+      mapResponseJson: mapResponseJson ?? defaultUploadResponseJsonMapper,
     ).firstWhere((AnonFileUploadEvent event) => event.response != null);
 
     return lastEvent.response;
   }
+
+  AnonFileUploadResponse defaultUploadResponseJsonMapper(
+    Map<String, dynamic> json,
+  ) =>
+      AnonFileUploadResponse.fromJson(json);
 }
