@@ -3,7 +3,6 @@ import 'dart:typed_data';
 
 import '../models/anon_file_upload.dart';
 import 'anon_files_client_base.dart';
-import 'get_direct_download_url_with.dart';
 import 'upload_file_with.dart';
 
 /// Provides a common implementation across all AnonFiles APIs.
@@ -49,9 +48,4 @@ abstract class AnonFilesImplClientBase extends AnonFilesClientBase {
         multipartRequestClient: multipartRequestClient,
         mapResponseJson: mapResponseJson,
       );
-
-  /// {@macro api.getDirectDownloadUrl}
-  @override
-  Future<String?> getDirectDownloadUrl(String downloadUrl) =>
-      getDirectDownloadUrlWith(downloadUrl: downloadUrl);
 }

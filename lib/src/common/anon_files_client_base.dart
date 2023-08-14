@@ -42,15 +42,4 @@ abstract class AnonFilesClientBase {
 
     return lastEvent.response;
   }
-
-  /// {@template api.getDirectDownloadUrl}
-  /// Scrape the direct download link from the provided [downloadUrl] when [upload]ing it.
-  ///
-  /// AnonFiles APIs download URLs point to their websites with a download button, not the file.
-  ///
-  /// To workaround this, this method will download the HTML page and scrape the direct link from the download button and return it.
-  ///
-  /// Then you can directly download this URL without needing to redirect the user or opening a webview.
-  /// {@endtemplate}
-  Future<String?> getDirectDownloadUrl(String downloadUrl);
 }

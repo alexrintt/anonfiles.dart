@@ -24,14 +24,8 @@ Future<void> useClient(AnonFilesClientBase client) async {
   if (response?.data != null) {
     final String htmlDownloadUrl = response!.htmlDownloadUrl!;
 
-    final String? fileDirectDownloadUrl =
-        await client.getDirectDownloadUrl(htmlDownloadUrl);
-
     // URL to open the download page.
     print('HTML download short URL: $htmlDownloadUrl');
-
-    // URL to the file directly.
-    print('Direct download URL: $fileDirectDownloadUrl');
 
     print('[-End-]\n');
   } else {
