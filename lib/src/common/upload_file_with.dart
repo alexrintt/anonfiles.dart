@@ -60,6 +60,7 @@ Stream<AnonFileUploadEvent> uploadFileWith({
   required String filename,
   required int length,
   MultipartRequestClient? multipartRequestClient,
+  AnonFileUploadResponse? Function(Map<String, dynamic>)? mapResponseJson,
 }) {
   final MultipartRequestClient sendMultipartRequest =
       multipartRequestClient ?? sendMultipartRequestTo;
@@ -88,7 +89,8 @@ Stream<AnonFileUploadEvent> uploadFileWith({
 
     yield AnonFileUploadEvent(
       progress: 1,
-      response: AnonFileUploadResponse.fromJson(response),
+      response: mapResponseJson?.call(response) ??
+          AnonFileUploadResponse.fromJson(response),
     );
   }
 

@@ -39,6 +39,7 @@ abstract class AnonFilesImplClientBase extends AnonFilesClientBase {
     required String filename,
     required int length,
     MultipartRequestClient? multipartRequestClient,
+    AnonFileUploadResponse? Function(Map<String, dynamic>)? mapResponseJson,
   }) =>
       uploadFileWith(
         byteStream: byteStream,
@@ -46,6 +47,7 @@ abstract class AnonFilesImplClientBase extends AnonFilesClientBase {
         endpoint: apiUploadUrl,
         length: length,
         multipartRequestClient: multipartRequestClient,
+        mapResponseJson: mapResponseJson,
       );
 
   /// {@macro api.getDirectDownloadUrl}

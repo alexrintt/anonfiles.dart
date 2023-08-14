@@ -19,6 +19,7 @@ abstract class AnonFilesClientBase {
     required String filename,
     required int length,
     MultipartRequestClient? multipartRequestClient,
+    AnonFileUploadResponse? Function(Map<String, dynamic>)? mapResponseJson,
   });
 
   /// {@template api.uploadFileBytes}
@@ -29,12 +30,14 @@ abstract class AnonFilesClientBase {
     required String filename,
     required int length,
     MultipartRequestClient? multipartRequestClient,
+    AnonFileUploadResponse? Function(Map<String, dynamic>)? mapResponseJson,
   }) async {
     final AnonFileUploadEvent lastEvent = await uploadFileBytesWithProgress(
       byteStream: byteStream,
       filename: filename,
       length: length,
       multipartRequestClient: multipartRequestClient,
+      mapResponseJson: mapResponseJson,
     ).firstWhere((AnonFileUploadEvent event) => event.response != null);
 
     return lastEvent.response;

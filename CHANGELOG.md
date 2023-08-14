@@ -1,3 +1,7 @@
+## 0.7.0
+
+- Add [mapResponseJson] param to help parse response from several providers.
+
 ## 0.6.1
 
 - Fix incorrect usage of [controller.close].
