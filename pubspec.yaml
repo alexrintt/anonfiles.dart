@@ -3,7 +3,7 @@ description: >-
   AnonFiles HTTP client.
   Support for AnonFiles, FileChan and LetsUpload.
   Large file upload is supported.
-version: 0.7.0
+version: 0.7.1
 repository: https://github.com/alexrintt/anonfiles.dart
 homepage: https://github.com/alexrintt/anonfiles.dart
 documentation: https://github.com/alexrintt/anonfiles.dart
