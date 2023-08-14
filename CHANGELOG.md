@@ -1,6 +1,7 @@
 ## 0.7.0
 
 - Add [mapResponseJson] param to help parse response from several providers.
+- Remove [getDirectDownloadUrl] from APIs.
 
 ## 0.6.1
 
