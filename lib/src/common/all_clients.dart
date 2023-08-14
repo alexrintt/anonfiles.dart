@@ -1,5 +1,4 @@
 import '../../anonfiles.dart';
-import '../providers/anonym_file.dart';
 
 List<AnonFilesClientBase> allClients() {
   return <AnonFilesClientBase>[
