@@ -1,3 +1,7 @@
+## 0.7.1
+
+- Fix missing client class export.
+
 ## 0.7.0
 
 - Add [mapResponseJson] param to help parse response from several providers.
